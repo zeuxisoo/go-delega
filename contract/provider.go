@@ -1,7 +1,11 @@
 package contract
 
+import (
+    "net/http"
+)
+
 type Provider interface{
     Name() string
-    Fetch() string
+    Fetch() (*http.Response, error)
     Result() string
 }
