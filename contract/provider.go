@@ -4,7 +4,7 @@ import (
     "net/http"
 )
 
-type Provider interface{
+type Provider interface {
     Name() string
     Fetch() (*http.Response, error)
     Result(*http.Response) ([]ProxyList, error)
