@@ -7,5 +7,11 @@ import (
 type Provider interface{
     Name() string
     Fetch() (*http.Response, error)
-    Result() string
+    Result(*http.Response) ([]ProxyList, error)
+}
+
+type ProxyList struct {
+    Ip          string
+    Port        string
+    Protocol    string
 }
