@@ -12,10 +12,6 @@ const (
     XiCiDaiLi
 )
 
-type Delega struct {
-
-}
-
 func Create(providerType int) (contract.Provider, error) {
     switch(providerType) {
         case FreeProxyLists:
