@@ -7,6 +7,7 @@ import (
     "github.com/zeuxisoo/go-delega/contract"
 
     "net/http"
+    "strings"
 )
 
 type XiCiDaiLi struct {
@@ -44,15 +45,17 @@ func (this *XiCiDaiLi) Result(response *http.Response) ([]contract.ProxyList, er
     proxyRows  := proxyTable.Find("tr:nth-child(n+2)")
 
     proxyRows.Each(func(i int, s *goquery.Selection) {
-        ip         := s.Find("td:nth-child(3)").Text()
-        port       := s.Find("td:nth-child(4)").Text()
-        protocol   := s.Find("td:nth-child(7)").Text()
+        country  := s.Find("td:nth-child(2) img").AttrOr("alt", "n/a")
+        ip       := s.Find("td:nth-child(3)").Text()
+        port     := s.Find("td:nth-child(4)").Text()
+        protocol := s.Find("td:nth-child(7)").Text()
 
         if ip != "" && port != "" {
             proxyList = append(proxyList, contract.ProxyList{
                 Ip      : ip,
                 Port    : port,
                 Protocol: protocol,
+                Country : strings.ToLower(country),
             })
         }
     })

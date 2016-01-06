@@ -14,4 +14,5 @@ type ProxyList struct {
     Ip          string
     Port        string
     Protocol    string
+    Country     string
 }

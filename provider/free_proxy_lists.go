@@ -9,6 +9,7 @@ import (
     "regexp"
     "net/http"
     "net/url"
+    "path/filepath"
     "strings"
 )
 
@@ -57,12 +58,14 @@ func (this *FreeProxyLists) Result(response *http.Response) ([]contract.ProxyLis
         ip       := s.Find("td:nth-child(1) script").Text()
         port     := s.Find("td:nth-child(2)").Text()
         protocol := s.Find("td:nth-child(3)").Text()
+        country  := s.Find("td:nth-child(5) img").AttrOr("src", "img/na.gif")
 
         if ip != "" && port != "" {
             proxyList = append(proxyList, contract.ProxyList{
                 Ip      : decodeIp(ip),
                 Port    : port,
                 Protocol: protocol,
+                Country : strings.ToLower(fileName(country)),
             })
         }
     })
@@ -81,4 +84,10 @@ func decodeIp(encodeString string) (string) {
     doc, _ := goquery.NewDocumentFromReader(reader)
 
     return doc.Find("a").Text()
+}
+
+func fileName(file_path string) (string) {
+    base_name := filepath.Base(file_path)
+
+    return strings.TrimSuffix(base_name, filepath.Ext(base_name))
 }
