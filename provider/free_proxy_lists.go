@@ -13,13 +13,16 @@ import (
     "strings"
 )
 
+// A FreeProxyLists is an object to provider set of defined methods for client.
 type FreeProxyLists struct {
 }
 
+// Get the current provider name
 func (this *FreeProxyLists) Name() string {
     return "Free Proxy Lists"
 }
 
+// Make request to the target service and return the http response
 func (this *FreeProxyLists) Fetch() (*http.Response, error) {
     request := gorequest.New()
 
@@ -42,6 +45,7 @@ func (this *FreeProxyLists) Fetch() (*http.Response, error) {
     return resp, nil
 }
 
+// Get the collection of the ProxyList by parse the http response
 func (this *FreeProxyLists) Result(response *http.Response) ([]contract.ProxyList, error) {
     doc, err := goquery.NewDocumentFromResponse(response)
 
