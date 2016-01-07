@@ -37,8 +37,8 @@ Simple usage:
 
 See in [GoWalker] or [GoDoc] for usage and details.
 
-[GoDoc]: https://gowalker.org/github.com/zeuxisoo/go-delega
 [GoWalker]: https://gowalker.org/github.com/zeuxisoo/go-delega
+[GoDoc]: http://godoc.org/github.com/zeuxisoo/go-delega
 
 ## License
 
