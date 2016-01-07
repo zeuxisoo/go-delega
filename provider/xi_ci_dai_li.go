@@ -10,13 +10,16 @@ import (
     "strings"
 )
 
+// A XiCiDaiLi is an object to provider set of defined methods for client.
 type XiCiDaiLi struct {
 }
 
+// Get the current provider name
 func(this *XiCiDaiLi) Name() string {
     return "Xi Ci Dai Li"
 }
 
+// Make request to the target service and return the http response
 func(this *XiCiDaiLi) Fetch() (*http.Response, error) {
     request := gorequest.New()
 
@@ -32,6 +35,7 @@ func(this *XiCiDaiLi) Fetch() (*http.Response, error) {
     return resp, nil
 }
 
+// Get the collection of the ProxyList by parse the http response
 func (this *XiCiDaiLi) Result(response *http.Response) ([]contract.ProxyList, error) {
     doc, err := goquery.NewDocumentFromResponse(response)
 
