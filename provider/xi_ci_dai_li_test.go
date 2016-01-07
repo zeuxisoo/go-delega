@@ -4,7 +4,7 @@ import (
     "testing"
 )
 
-func TestNameMethod(t *testing.T) {
+func TestXiCiDaiLiNameMethod(t *testing.T) {
     proxyProvider := &XiCiDaiLi{}
 
     if proxyProvider.Name() != "Xi Ci Dai Li" {
@@ -12,7 +12,7 @@ func TestNameMethod(t *testing.T) {
     }
 }
 
-func TestFetchMethod(t *testing.T) {
+func TestXiCiDaiLiFetchMethod(t *testing.T) {
     proxyProvider := &XiCiDaiLi{}
     resp, err     := proxyProvider.Fetch()
 
@@ -25,7 +25,7 @@ func TestFetchMethod(t *testing.T) {
     }
 }
 
-func TestResultMethod(t *testing.T) {
+func TestXiCiDaiLiResultMethod(t *testing.T) {
     proxyProvider := &XiCiDaiLi{}
     resp, _       := proxyProvider.Fetch()
 
